@@ -1,14 +1,6 @@
 # SOC Analyst Portfolio & Intelligence Archive 🛡️
 ### Technical Field Reports by Enes Arda
-
-**Role:** Tier 1 SOC Analyst / Incident Responder
-
-**Location:** Türkiye (Focus on KVKK Compliance & USOM Guidelines)
-
-**Status:** Open for opportunities
-
----
-## 🚀 Repository Focus
+## Repository Focus
 This repository documents my methodology in **Threat Detection**, **Malware Triage**, and **Log Analysis**. Unlike standard academic notes, these are structured as **Field Intelligence Reports** demonstrating actionable defense capabilities.
 ## 📁 Intelligence Modules
 * **[📂 Malware Analysis](./Malware-Analysis/)**
