@@ -21,9 +21,9 @@ This repository documents my methodology in **Threat Detection**, **Malware Tria
 ## 🛠️ Technical Arsenal
 | Category | Tools & Frameworks |
 | :--- | :--- |
-| **Standards** | MITRE ATT&CK, Pyramid Of Pain, Cyber Kill Chain, Unified Kill Chain |
-| **Forensics** | Phishing Analysis, Wireshark, Snort |
-| **Defensive** | Splunk (SPL), Elastic (ELK) Stack, SOAR |
+| **Standards** | MITRE ATT&CK, Cyber Kill Chain, Unified Kill Chain |
+| **Forensics** | Phishing Analysis, Wireshark, Snort, NetworkMiner |
+| **Defensive** | Splunk (SPL) |
 | **Endpoint Monitoring** |	Windows Event Logs, Linux Syslog/Auditd, Web Server Logs (IIS/Apache)
 ---
 ### 🔗 Connect & Contact
