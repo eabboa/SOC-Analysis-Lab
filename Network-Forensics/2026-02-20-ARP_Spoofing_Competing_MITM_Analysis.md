@@ -53,7 +53,6 @@ Further refinement of the display filter (`arp.opcode == 2 && arp.src.proto_ipv4
 |**Indicator Type**|**Value**|**Context**|
 |---|---|---|
 |**Target Gateway IP**|`192.168.10.1`|Spoofed IP Address|
-|**Legitimate Gateway MAC**|`[Insert Legitimate MAC Here]`|The baseline hardware address|
 |**Malicious MAC A**|`02:aa:bb:cc:00:01`|Rogue device asserting gateway ownership|
 |**Malicious MAC B**|`02:fe:fe:fe:55:55`|Secondary rogue device asserting gateway ownership|
 |**Attack Vector**|GARP Flooding|Abuse of ARP `opcode 2` without preceding `opcode 1`|
