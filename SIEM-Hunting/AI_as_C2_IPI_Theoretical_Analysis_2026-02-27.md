@@ -8,6 +8,16 @@
 
 **Platform:** Independent Research
 
+_**Simple Logic Chain:**_
+
+Ingestion: AI reads a poisoned web prompt. ↓
+
+Hijack: AI outputs malicious shell commands. ↓
+
+Execution: Host application runs the commands locally. ↓
+
+Exfiltration: Stolen data is sent out via auto-rendered image links.
+
 ### 1. Executive Brief
 
 **Scenario:** Proactive threat modeling and SIEM rule development focusing on the weaponization of Artificial Intelligence assistants. Adversaries are actively leveraging Indirect Prompt Injection (IPI) to force trusted LLM environments to act as Command & Control (C2) infrastructure.
