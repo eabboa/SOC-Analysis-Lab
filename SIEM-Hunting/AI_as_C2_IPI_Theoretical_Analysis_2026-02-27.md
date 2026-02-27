@@ -100,11 +100,12 @@ Detection requires correlating endpoint process lineage with network proxy traff
 Code below is an AI generated EXAMPLE  rule.
 
 ```spl
-index=edr EventCode=1 (ParentImage="*msedge.exe*" OR ParentImage="*copilot*") (Image="*powershell.exe*" OR Image="*cmd.exe*") 
-| eval host_time=host."_"._time 
-| append [search index=proxy (url="*api.openai.com*" OR url="*gemini*") | eval host_time=host."_"._time]
-| stats count, values(Image) as Process, values(url) as Destination by host 
-| where count > 1 AND (Destination="*api.openai.com*" OR Destination="*gemini*")
+index IN (sysmon, proxy) (EventCode=3 Image="ollama.exe") OR (url="api.openai.com")
+| eval ip_address = coalesce(SourceIp, src_ip)
+| bin _time span=1m
+| stats count(eval(index=="sysmon")) as edr_match, count(eval(index=="proxy")) as proxy_match, sum(cs_bytes) as Total_Bytes by ip_address, _time
+| where edr_match > 0 AND proxy_match > 0 AND Total_Bytes > 10485760
+| table _time, ip_address, Total_Bytes
 ```
 
 **Immediate Fix:** 
