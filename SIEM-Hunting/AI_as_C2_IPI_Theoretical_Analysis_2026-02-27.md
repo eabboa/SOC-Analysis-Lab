@@ -10,13 +10,7 @@
 
 _**Simple Logic Chain:**_
 
-Ingestion: AI reads a poisoned web prompt. ↓
-
-Hijack: AI outputs malicious shell commands. ↓
-
-Execution: Host application runs the commands locally. ↓
-
-Exfiltration: Stolen data is sent out via auto-rendered image links.
+AI ingests external data with hidden prompt $\rightarrow$ AI outputs malicious script $\rightarrow$ Vulnerable local client application executes script in shell $\rightarrow$ Shell returns raw local data to the AI context $\rightarrow$ AI formats data into a Markdown image URL $\rightarrow$ Client application attempts to render image, triggering GET request with data in the URI.
 
 ### 1. Executive Brief
 
