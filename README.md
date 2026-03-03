@@ -29,7 +29,7 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 | Category | Tools & Frameworks |
 | :--- | :--- |
 | **Security Frameworks** | MITRE ATT&CK®, MITRE D3FEND™, Cyber Kill Chain, Unified Kill Chain |
-| **Network Traffic Analysis** | Wireshark, Snort, NetworkMiner |
+| **Network Traffic Analysis** | Wireshark, Snort, NetworkMiner, Zeek |
 | **SIEM & Log Management** | Splunk (SPL), Elastic (ELK) |
 | **Endpoint Monitoring** |	Windows Event Logs
 ---
