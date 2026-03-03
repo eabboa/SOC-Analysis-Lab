@@ -8,9 +8,56 @@
 
 **Platform:** Independent Research
 
-_**Simple Logic Chain:**_
+### Flowchart
 
-AI ingests external data with hidden prompt $\rightarrow$ AI outputs malicious script $\rightarrow$ Vulnerable local client application executes script in shell $\rightarrow$ Shell returns raw local data to the AI context $\rightarrow$ AI formats data into a Markdown image URL $\rightarrow$ Client application attempts to render image, triggering GET request with data in the URI.
+````mermaid
+flowchart LR
+
+classDef input fill:#4A90D9,color:#fff
+classDef process fill:#6B7280,color:#fff
+classDef decision fill:#F59E0B,color:#fff
+classDef output fill:#10B981,color:#fff
+
+subgraph ATK1[Attack Ingestion]
+  payload([Malicious Web Payload])
+  rag[AI RAG Ingests Content]
+  ipi{System Prompt Overridden}
+end
+
+subgraph ATK2[C2 Execution]
+  fetch[AI Fetches Attacker Summary]
+  parse[Malware Parses Encoded Commands]
+  shell[Browser Spawns Shell Process]
+end
+
+subgraph EXFIL[Exfiltration]
+  collect[Local Data Collected]
+  exfil[Markdown Image GET Request]
+  c2[[Attacker C2 Receives Data]]
+end
+
+subgraph DETECT[Detection and Response]
+  edr[EDR Monitors Process Lineage]
+  siem[SIEM Correlation Fires]
+  alert{Suspicious Activity Detected}
+  isolate[[Endpoint Isolated]]
+end
+
+payload --> rag --> ipi
+ipi -->|yes| fetch
+ipi -->|no| edr
+fetch --> parse --> shell --> collect --> exfil --> c2
+shell --> edr
+exfil --> edr
+edr --> siem --> alert
+alert -->|confirmed| isolate
+alert -->|false positive| edr
+
+class payload input
+class rag,fetch,parse,shell,collect,exfil,edr,siem process
+class ipi,alert decision
+class c2,isolate output
+````
 
 ### 1. Executive Brief
 
