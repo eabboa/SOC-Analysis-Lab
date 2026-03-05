@@ -19,6 +19,21 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 
 ```
 <!-- PORTFOLIO:START -->
+
+* **[Malware-Analysis](./Malware-Analysis/)**
+  * *Static & Dynamic triage of obfuscated payloads (e.g., Cryptbot, Loaders). IOC extraction and MITRE ATT&CK mapping.*
+  * [2026 02 18 Wannacry Memory Forensics Analysis](./Malware-Analysis/2026-02-18-WannaCry_Memory_Forensics_Analysis.md) — ***Date:** 2026-02-18*
+  * [Agent Tesla Vba Dropper 2026 03 02](./Malware-Analysis/Agent_Tesla_VBA_Dropper_2026-03-02.md) — ***Date:** 2026-03-02*
+
+* **[Network-Forensics](./Network-Forensics/)**
+  * *PCAP analysis, C2 traffic identification, and protocol abuse detection.*
+  * [2026 02 20 Arp Spoofing Competing Mitm Analysis](./Network-Forensics/2026-02-20-ARP_Spoofing_Competing_MITM_Analysis.md) — ***Date:** 2026-02-20*
+  * [Triage Of Local Dns Spoofing Activity](./Network-Forensics/Triage of Local DNS Spoofing Activity.md) — ***Date:** 2026-03-04*
+
+* **[SIEM-Hunting](./SIEM-Hunting/)**
+  * *Splunk/ELK queries, Sigma rules, and brute-force detection.*
+  * [Ai As C2 Ipi Theoretical Analysis 2026 02 27](./SIEM-Hunting/AI_as_C2_IPI_Theoretical_Analysis_2026-02-27.md) — ***Date:** 2026-02-21*
+
 <!-- PORTFOLIO:END -->
 ```
 
