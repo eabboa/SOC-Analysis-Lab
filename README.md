@@ -17,14 +17,11 @@ First-year Management Information Systems student at Marmara University developi
 ## Lab Exercises & Security Write-ups
 Unlike standard academic notes, these are structured as **Field Intelligence Reports** demonstrating actionable defense capabilities.
 
+```
+<!-- PORTFOLIO:START -->
+<!-- PORTFOLIO:END -->
+```
 
-* **[Malware Analysis](./Malware-Analysis/)**
-  * *Static & Dynamic triage of obfuscated payloads (e.g., Cryptbot, Loaders).*
-  * *IOC extraction and MITRE ATT&CK mapping.*
-* **[Network Forensics](./Network-Forensics/)**
-  * *PCAP analysis, C2 traffic identification, and protocol abuse detection.*
-* **[SIEM & Detection Logic](./SIEM-Hunting/)**
-  * *Splunk/ELK queries, Sigma rules, and brute-force detection.*
 ## Technical Arsenal
 | Category | Tools & Frameworks |
 | :--- | :--- |
