@@ -79,7 +79,7 @@ class c2,isolate output
   - **T1071.001:** Application Layer Protocol (Web Protocols)
   - **T1567:** Exfiltration Over Web Service
 
-Below is an example of AI generated EDR Telemetry mockup showing ``msedge.exe`` spawning ``powershell.exe`` with heavily obfuscated command-line arguments
+Below is an example of an AI-generated EDR Telemetry mockup showing ``msedge.exe`` spawning ``powershell.exe`` with heavily obfuscated command-line arguments
 
 ```
 {
@@ -144,7 +144,7 @@ Detection requires correlating endpoint process lineage with network proxy traff
 
 **SIEM Correlation (Splunk):**
 
-Code below is an AI generated EXAMPLE  rule.
+Code below is an AI-generated EXAMPLE  rule.
 
 ```spl
 index IN (sysmon, proxy) (EventCode=3 Image="ollama.exe") OR (url="api.openai.com")
@@ -170,3 +170,12 @@ index IN (sysmon, proxy) (EventCode=3 Image="ollama.exe") OR (url="api.openai.co
 - I learned that relying solely on network perimeter defenses (like IP blacklists) is insufficient against modern, tunneled threats. 
 
 - Mapping this out reinforced the necessity of defense-in-depth: specifically, the value of cross-correlating endpoint telemetry (process lineage) with network layer activity (proxy logs) to uncover threats that masquerade as legitimate traffic.
+
+
+A little bit of extra on how the "local malware parses" things:
+
+1) **Pre-staged malware** monitors the AI interface output, parses encoded commands, and calls PowerShell under the Edge process context
+
+2) AI agent with **OS tool permissions** (Copilot/AutoGPT-style) IPI instructs it to invoke its own legitimate execute_command tool directly, no malware needed
+
+3) Malicious **browser extension** intercepts AI responses, detects encoded payloads, and spawns PowerShell via native messaging APIs
