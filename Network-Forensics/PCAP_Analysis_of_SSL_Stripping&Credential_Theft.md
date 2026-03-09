@@ -8,6 +8,55 @@
 
 **Platform:** THM / Man-in-the-Middle detection
 
+````mermaid
+flowchart LR
+classDef input fill:#4A90D9,color:#fff
+classDef process fill:#6B7280,color:#fff
+classDef decision fill:#F59E0B,color:#fff
+classDef output fill:#10B981,color:#fff
+
+A([Alert DNS spoofing anomaly])
+class A input
+
+subgraph TrafficAnalysis
+B[Filter for TLS Client Hello]
+C{Is TLS handshake present}
+D[Confirm SSL Strip attack]
+E[Establish normal TLS baseline]
+F[Filter HTTP POST traffic]
+G{Are cleartext creds exposed}
+end
+class B,D,E,F process
+class C,G decision
+
+subgraph IncidentResponse
+H[[Isolate victim endpoint]]
+I[[Block rogue device MAC]]
+J[[Force user password reset]]
+K[[Continue network monitoring]]
+end
+class H,I,J,K output
+
+subgraph NetworkHardening
+L[[Enforce domain HSTS]]
+M[[Enable Dynamic ARP Inspection]]
+end
+class L,M output
+
+A --> B
+B --> C
+C -->|Yes| E
+C -->|No| D
+D --> F
+F --> G
+G -->|Yes| H
+G -->|No| K
+H --> I
+I --> J
+J --> L
+L --> M
+````
+
 ### 1. Executive Brief
 
 **Scenario:** Network traffic analysis identified a Man-in-the-Middle (MitM) attack targeting the local corporate authentication portal. The attacker downgraded the victim's secure connection (HTTPS) to plain text (HTTP) and captured login credentials.
