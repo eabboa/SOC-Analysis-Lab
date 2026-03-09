@@ -35,6 +35,7 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 * **[Network-Forensics](./Network-Forensics/)**
   * *PCAP analysis, C2 traffic identification, and protocol abuse detection.*
   * [Arp Spoofing Competing Mitm Analysis](./Network-Forensics/ARP_Spoofing_Competing_MITM_Analysis.md)
+  * [Pcap Analysis Of Ssl Stripping&Credential Theft](./Network-Forensics/PCAP_Analysis_of_SSL_Stripping&Credential_Theft.md)
   * [Triage Of Local Dns Spoofing Activity](./Network-Forensics/Triage_of_Local_DNS_Spoofing_Activity.md)
 
 * **[SIEM-Hunting](./SIEM-Hunting/)**
