@@ -1,6 +1,6 @@
 # PCAP Analysis of SSL Stripping & Credential Theft
 
-**Date:** 2026-02-21
+**Date:** 2026-03-09
 
 **Author:** Enes Arda Baydaş
 
