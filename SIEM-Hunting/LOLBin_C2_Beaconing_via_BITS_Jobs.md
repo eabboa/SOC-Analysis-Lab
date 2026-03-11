@@ -1,6 +1,6 @@
 # Threat Hunt Report: LOLBin C2 Beaconing via BITS Jobs
 
-**Date:** 2026-03-01  
+**Date:** 2026-03-11 
 
 **Analyst:** Enes Arda Baydaş
 
