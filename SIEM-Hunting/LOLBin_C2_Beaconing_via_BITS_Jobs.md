@@ -8,6 +8,53 @@
 
 **MITRE ATT&CK:** T1197, T1105, T1071.001
 
+````mermaid
+flowchart LR
+classDef input fill:#4A90D9,color:#fff
+classDef process fill:#6B7280,color:#fff
+classDef decision fill:#F59E0B,color:#fff
+classDef output fill:#10B981,color:#fff
+
+subgraph Detection
+I1([IDS Alert Outbound HTTP])
+P1[Filter Logs In Kibana]
+P2[Analyze User Agent Frequency]
+end
+
+subgraph Investigation
+D1{Is Activity Authorized}
+O1[[Mark False Positive]]
+P3[Identify bitsadmin Command Channel]
+end
+
+subgraph Containment
+P4[Isolate Compromised Host]
+P5[Preserve Forensic Image]
+P6[Block Pastebin Domain]
+end
+
+subgraph Follow Up
+O2[[Review Auth Logs]]
+O3[[Investigate Initial Access]]
+end
+
+I1 --> P1
+P1 --> P2
+P2 --> D1
+D1 -->|Yes| O1
+D1 -->|No| P3
+P3 --> P4
+P4 --> P5
+P5 --> P6
+P6 --> O2
+P6 --> O3
+
+class I1 input
+class P1,P2,P3,P4,P5,P6 process
+class D1 decision
+class O1,O2,O3 output
+````
+
 ---
 ## Executive Summary
 
