@@ -21,6 +21,14 @@ run("git add .")
 print("=== COMMITTING ===")
 run('git commit -m "auto: update docs"')
 
+print("=== SYNCING WITH REMOTE ===")
+# Fetches remote changes and applies your local commits on top
+sync_result = run("git pull origin main --rebase")
+
+if sync_result.returncode != 0:
+    print("ERR: Conflict detected during pull. Resolve manually.")
+    sys.exit(1)
+
 print("=== PUSHING TO GITHUB ===")
 result = run("git push origin main")
 
