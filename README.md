@@ -29,19 +29,19 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 
 * **[Malware-Analysis](./Malware-Analysis/)**
   * *Static & Dynamic triage of obfuscated payloads (e.g., Cryptbot, Loaders). IOC extraction and MITRE ATT&CK mapping.*
-  * [Agent Tesla Vba Dropper](./Malware-Analysis/Agent_Tesla_VBA_Dropper.md)
-  * [Wannacry Memory Forensics Analysis](./Malware-Analysis/WannaCry_Memory_Forensics_Analysis.md)
+  * [Agent Tesla VBA Dropper](./Malware-Analysis/Agent_Tesla_VBA_Dropper.md)
+  * [WannaCry Memory Forensics Analysis](./Malware-Analysis/WannaCry_Memory_Forensics_Analysis.md)
 
 * **[Network-Forensics](./Network-Forensics/)**
   * *PCAP analysis, C2 traffic identification, and protocol abuse detection.*
-  * [Arp Spoofing Competing Mitm Analysis](./Network-Forensics/ARP_Spoofing_Competing_MITM_Analysis.md)
-  * [Cobaltstrike And Icedid Infection](./Network-Forensics/CobaltStrike-and-IcedID-Infection.md)
-  * [Pcap Analysis Of Ssl Stripping&Credential Theft](./Network-Forensics/PCAP_Analysis_of_SSL_Stripping&Credential_Theft.md)
-  * [Triage Of Local Dns Spoofing Activity](./Network-Forensics/Triage_of_Local_DNS_Spoofing_Activity.md)
+  * [ARP Spoofing Competing MITM Analysis](./Network-Forensics/ARP_Spoofing_Competing_MITM_Analysis.md)
+  * [CobaltStrike and IcedID Infection](./Network-Forensics/CobaltStrike-and-IcedID-Infection.md)
+  * [PCAP Analysis of SSL Stripping&Credential Theft](./Network-Forensics/PCAP_Analysis_of_SSL_Stripping&Credential_Theft.md)
+  * [Triage of Local DNS Spoofing Activity](./Network-Forensics/Triage_of_Local_DNS_Spoofing_Activity.md)
 
 * **[SIEM-Hunting](./SIEM-Hunting/)**
   * *Splunk/ELK queries, Sigma rules, and brute-force detection.*
-  * [Ai As C2 Theoretical Analysis](./SIEM-Hunting/AI_as_C2_Theoretical_Analysis.md)
-  * [Lolbin C2 Beaconing Via Bits Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
+  * [AI As C2 Theoretical Analysis](./SIEM-Hunting/AI_as_C2_Theoretical_Analysis.md)
+  * [LOLBin C2 Beaconing Via BITS Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
 
 <!-- PORTFOLIO:END -->

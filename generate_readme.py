@@ -41,9 +41,29 @@ END_MARKER   = "<!-- PORTFOLIO:END -->"
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def display_name(path: Path) -> str:
-    """Convert filename to readable label."""
-    stem = path.stem.replace("-", " ").replace("_", " ")
-    return stem.title()
+    """Convert filename to readable label while preserving technical casing."""
+    # Replace separators and split into words
+    words = path.stem.replace("-", " ").replace("_", " ").split()
+    
+    # Common connectors to keep lowercase
+    lower_exceptions = {"and", "of", "to", "the", "for", "with", "in", "on", "at", "by", "a", "an"}
+    
+    formatted_words = []
+    for i, word in enumerate(words):
+        # Always capitalize the first word if it's all lowercase
+        if i == 0:
+            formatted_words.append(word if not word.islower() else word.capitalize())
+        # Keep connectors lowercase
+        elif word.lower() in lower_exceptions:
+            formatted_words.append(word.lower())
+        # Preserve words that already have uppercase letters (e.g., IcedID)
+        elif not word.islower():
+            formatted_words.append(word)
+        # Capitalize standard lowercase words (e.g., analysis -> Analysis)
+        else:
+            formatted_words.append(word.capitalize())
+            
+    return " ".join(formatted_words)
 
 def extract_description(filepath: Path) -> str:
     """Pull first non-empty, non-heading line from a .md file as description."""
