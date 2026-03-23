@@ -1,6 +1,6 @@
 ### SIEM Hunting: Identifying BITSAdmin LOLBin C2 Traffic in Kibana
 
-**Date:** 2026-03-20  
+**Date:** 2026-03-23
 
 **Author:** Enes Arda Baydaş
 
