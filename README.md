@@ -42,6 +42,7 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 * **[SIEM-Hunting](./SIEM-Hunting/)**
   * *Splunk/ELK queries, Sigma rules, and brute-force detection.*
   * [AI As C2 Theoretical Analysis](./SIEM-Hunting/AI_as_C2_Theoretical_Analysis.md)
+  * [BITSAdmin LOLBin C2 Kibana](./SIEM-Hunting/BITSAdmin_LOLBin_C2_Kibana.md)
   * [LOLBin C2 Beaconing Via BITS Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
 
 <!-- PORTFOLIO:END -->
