@@ -46,4 +46,10 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
   * [LOLBin C2 Beaconing Via BITS Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
   * [Tempest IR Follina Killchain](./SIEM-Hunting/Tempest_IR_Follina_Killchain.md)
 
+* **[Incident-Response](./Incident-Response/)**
+  * *Forensic timeline reconstruction, live triage, and containment playbooks for active breaches.*
+
+* **[Detection-Engineering](./Detection-Engineering/)**
+  * *Custom YARA/Snort signatures, proactive alert creation, and false-positive tuning against adversary tradecraft.*
+
 <!-- PORTFOLIO:END -->
