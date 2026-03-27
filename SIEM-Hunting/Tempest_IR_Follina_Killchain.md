@@ -4,7 +4,7 @@
 
 **Author:** Enes Arda Baydaş  
 
-**Domain:** Incident Response 
+**Domain:** Incident-Response 
 
 **Environment:** TryHackMe (Tempest)  
 
