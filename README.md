@@ -44,5 +44,6 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
   * [AI As C2 Theoretical Analysis](./SIEM-Hunting/AI_as_C2_Theoretical_Analysis.md)
   * [BITSAdmin LOLBin C2 Kibana](./SIEM-Hunting/BITSAdmin_LOLBin_C2_Kibana.md)
   * [LOLBin C2 Beaconing Via BITS Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
+  * [Tempest IR Follina Killchain](./SIEM-Hunting/Tempest_IR_Follina_Killchain.md)
 
 <!-- PORTFOLIO:END -->
