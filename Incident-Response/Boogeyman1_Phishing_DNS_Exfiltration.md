@@ -4,7 +4,7 @@
 
 **Author:** Enes Arda Baydaş
 
-**Domain:** Digital Forensics / Incident Response  
+**Domain:** Incident Response  
  
 **Environment:** TryHackMe (Boogeyman 1)  
 
