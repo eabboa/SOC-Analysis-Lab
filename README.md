@@ -1,8 +1,8 @@
 <h1 align="center">Enes Arda Baydaş</h1>
-<h3 align="center">Cybersecurity Student focusing on SOC Operations</h3>
+<h3 align="center">SOC Analyst Candidate | Threat Detection & Log Analysis</h3>
 
 <p align="center">
-Turkey | Actively seeking a SOC Analyst internship.
+Turkey | Available for SOC Analyst Internship.
 </p>
 
 <p align="center">
@@ -11,7 +11,15 @@ Turkey | Actively seeking a SOC Analyst internship.
 </p>
 
 ## About Me
-First-year Management Information Systems student at Marmara University developing foundational skills in cybersecurity **threat detection**, **malware triage**, and **log analysis**.
+SOC Analyst candidate building proactive threat detection and malware triage pipelines. Specialized in bridging the gap between theoretical security concepts and applied engineering through custom lab environments and automation. Currently a Management Information Systems student at Marmara University.
+
+##  Certifications & Continuous Learning
+
+CompTIA Security+ (In Progress)
+
+TryHackMe: SOC Level 1 Path (Completed)
+
+TryHackMe: SOC Level 2 Path (In Progress)
 
 ## Technical Arsenal
 | Category | Tools & Frameworks |
