@@ -22,6 +22,14 @@ First-year Management Information Systems student at Marmara University developi
 | **Endpoint Monitoring** |	Windows Event Logs & Sysmon
 ---
 
+### Featured Engineering Projects
+
+* **[Autonomous Tier 1 Phishing Triage Pipeline (Editing)](link_to_your_new_repo)**
+    * *Architecture:* Engineered a two-process SOC automation system using a LangGraph ReAct AI agent and a FastMCP tool server.
+    * *Capabilities:* Automates email ingestion, extracts IOCs via Regex, queries live threat intelligence (VirusTotal API), and routes verdicts to a SIEM.
+    * *SIEM Integration:* Configured Splunk Enterprise for continuous JSON log ingestion, building a real-time "Single Pane of Glass" dashboard for threat distribution and analyst queues.
+    * *Constraints Overcome:* Managed API rate limits via asynchronous batch processing loops and engineered custom JSON log formatters to ensure SIEM compatibility.
+
 ## Lab Exercises & Security Write-ups
 Unlike standard academic notes, these are structured as **Field Intelligence Reports** demonstrating actionable defense capabilities.
 
