@@ -64,6 +64,7 @@ Unlike standard academic notes, these are structured as **Field Intelligence Rep
 * **[Incident-Response](./Incident-Response/)**
   * *Forensic timeline reconstruction, live triage, and containment playbooks for active breaches.*
   * [Boogeyman1 Phishing DNS Exfiltration](./Incident-Response/Boogeyman1_Phishing_DNS_Exfiltration.md)
+  * [Boogeyman2 Macro to C2 Memory Analysis](./Incident-Response/Boogeyman2_Macro_to_C2_Memory_Analysis.md)
   * [Tempest IR Follina Killchain](./Incident-Response/Tempest_IR_Follina_Killchain.md)
 
 * **[Detection-Engineering](./Detection-Engineering/)**
