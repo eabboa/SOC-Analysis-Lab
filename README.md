@@ -1,5 +1,5 @@
 <h1 align="center">Enes Arda Baydaş</h1>
-<h3 align="center">SOC Analyst Candidate | Threat Detection & Log Analysis</h3>
+<h3 align="center">SOC Analyst Candidate | Building Detection & DFIR Labs</h3>
 
 <p align="center">
 Turkey | Available for SOC Analyst Internship.
