@@ -39,7 +39,6 @@ TryHackMe: SOC Level 2 Path (In Progress)
     * *Constraints Overcome:* Managed API rate limits via asynchronous batch processing loops and engineered custom JSON log formatters to ensure SIEM compatibility.
 
 ## Lab Exercises & Security Write-ups
-Unlike standard academic notes, these are structured as **Field Intelligence Reports** demonstrating actionable defense capabilities.
 
 <!-- PORTFOLIO:START -->
 
