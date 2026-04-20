@@ -17,10 +17,6 @@ SOC Analyst candidate building proactive threat detection and malware triage pip
 
 CompTIA Security+ (In Progress)
 
-TryHackMe: SOC Level 1 Path (Completed)
-
-TryHackMe: SOC Level 2 Path (In Progress)
-
 ## Technical Arsenal
 | Category | Tools & Frameworks |
 | :--- | :--- |
