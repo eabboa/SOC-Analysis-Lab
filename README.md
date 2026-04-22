@@ -64,5 +64,6 @@ CompTIA Security+ (In Progress)
 
 * **[Detection-Engineering](./Detection-Engineering/)**
   * *Custom YARA/Snort signatures, proactive alert creation, and false-positive tuning against adversary tradecraft.*
+  * [Atomic Red Team Emulation Sysmon Detection](./Detection-Engineering/Atomic_Red_Team_Emulation_Sysmon_Detection.md)
 
 <!-- PORTFOLIO:END -->
