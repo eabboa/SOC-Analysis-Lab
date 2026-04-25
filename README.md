@@ -2,7 +2,7 @@
 <h3 align="center">SOC Analyst Candidate | Building Detection & DFIR Labs</h3>
 
 <p align="center">
-Turkey | Available for SOC Analyst Internship.
+Istanbul, Türkiye | Available for SOC Analyst Internship.
 </p>
 
 <p align="center">
@@ -16,6 +16,7 @@ SOC Analyst candidate building proactive threat detection and malware triage pip
 ##  Certifications & Continuous Learning
 
 [CompTIA Security+](https://www.credly.com/badges/81193545-fc7d-464f-98f3-d27dd681e688/linked_in_profile)
+[TryHackMe SOC Level 1 completion](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DHTCNMB2AY.pdf)
 
 ## Technical Arsenal
 | Category | Tools & Frameworks |
