@@ -15,7 +15,7 @@ SOC Analyst candidate building proactive threat detection and malware triage pip
 
 ##  Certifications & Continuous Learning
 
-CompTIA Security+ (In Progress)
+CompTIA Security+
 
 ## Technical Arsenal
 | Category | Tools & Frameworks |
