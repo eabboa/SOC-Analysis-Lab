@@ -15,7 +15,7 @@ SOC Analyst candidate building proactive threat detection and malware triage pip
 
 ##  Certifications & Continuous Learning
 
-CompTIA Security+
+[CompTIA Security+](https://www.credly.com/badges/81193545-fc7d-464f-98f3-d27dd681e688/linked_in_profile)
 
 ## Technical Arsenal
 | Category | Tools & Frameworks |
