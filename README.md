@@ -2,7 +2,7 @@
 <h3 align="center">SOC Analyst Candidate | Building Detection & DFIR Labs</h3>
 
 <p align="center">
-Istanbul, Türkiye | Available for SOC Analyst Internship.
+Istanbul, Türkiye | Available for Tier 1 SOC Analyst Internship
 </p>
 
 <p align="center">
@@ -11,7 +11,7 @@ Istanbul, Türkiye | Available for SOC Analyst Internship.
 </p>
 
 ## About Me
-SOC Analyst candidate building proactive threat detection and malware triage pipelines. Specialized in bridging the gap between theoretical security concepts and applied engineering through custom lab environments and automation. Currently a Management Information Systems student at Marmara University.
+SOC Analyst candidate building proactive threat detection and malware triage pipelines. Specialized in custom lab environments and automation. Currently a First-year Management Information Systems student at Marmara University.
 
 ##  Certifications & Continuous Learning
 
