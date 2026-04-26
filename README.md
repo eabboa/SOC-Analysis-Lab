@@ -17,7 +17,7 @@ SOC Analyst candidate building proactive threat detection and malware triage pip
 
 [CompTIA Security+](https://www.credly.com/badges/81193545-fc7d-464f-98f3-d27dd681e688/linked_in_profile)
 
-[TryHackMe SOC Level 1 completion](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DHTCNMB2AY.pdf)
+[TryHackMe SOC Level 1](https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-DHTCNMB2AY.pdf)
 
 ## Technical Arsenal
 | Category | Tools & Frameworks |
