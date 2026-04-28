@@ -31,14 +31,14 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
 
 ### Featured Engineering Projects
 
-* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/sentinel-triage-agent)**
+* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Sentinel_Native_Autonomous_Triage_Agent.md)**
     * ***Architecture***: Engineered a **bidirectional SOAR-lite pipeline** using **LangGraph StateGraph** to orchestrate a $0-cost triage workflow via **Azure REST APIs** and **Managed Identities** (zero-secret architecture).
     * ***Asynchronous Orchestration***: Leverages `asyncio` and `aiohttp` to bypass synchronous API bottlenecks, executing **concurrent CTI enrichment** (VirusTotal/AbuseIPDB) and parallel incident polling with rate-limit semaphores.
     * ***Deterministic Reliability***: Mitigates LLM unreliability by enforcing **strict Pydantic schemas** for KQL generation and classification, ensuring 100% valid state transitions and token-efficient processing.
     * ***Resilience Engineering***: Implemented **Optimistic Concurrency Control (ETags)** to prevent race conditions in multi-analyst environments and a **Human-in-the-Loop (HITL)** gating mechanism for high-fidelity incident closure.
 
 
-* **[Autonomous Tier 1 Phishing Triage Pipeline](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Sentinel_Native_Autonomous_Triage_Agent.md)**
+* **[Autonomous Tier 1 Phishing Triage Pipeline](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Autonomous_Tier_1_Phishing_Triage_Pipeline.md)**
     * ***Architecture**:* Engineered a **two-process SOC automation system** using a LangGraph ReAct AI agent and a FastMCP tool server.
     * ***Capabilities**:* Automates email ingestion, extracts IOCs via Regex, queries **live threat intelligence** (VirusTotal API), and routes verdicts to a SIEM.
     * ***SIEM Integration**:* Configured **Splunk Enterprise** for continuous JSON log ingestion, building a real-time **"Single Pane of Glass"** dashboard for threat distribution and analyst queues.
