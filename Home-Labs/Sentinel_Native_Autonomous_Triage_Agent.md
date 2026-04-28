@@ -17,6 +17,8 @@
 
 _Status_: Currently being updated.
 
+_Note_: This project is designed as a prototype to establish the logic of cybersecurity. LLMs (Copilot/Gemini) were actively used in the coding processes. My focus is not on software engineering, but rather on designing a security architecture that will solve the bottlenecks in SOC processes.
+
 ---
 
 ## What I Built
