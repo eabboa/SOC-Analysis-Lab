@@ -15,6 +15,8 @@
 **Cost:** $0 (free tier across all services)  
 **Code:** [sentinel-triage-agent](https://github.com/eabboa/sentinel-triage-agent)
 
+_Status_: Currently being updated.
+
 ---
 
 ## What I Built
