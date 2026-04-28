@@ -38,7 +38,7 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
     * ***Resilience Engineering***: Implemented **Optimistic Concurrency Control (ETags)** to prevent race conditions in multi-analyst environments and a **Human-in-the-Loop (HITL)** gating mechanism for high-fidelity incident closure.
 
 
-* **[Autonomous Tier 1 Phishing Triage Pipeline](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Autonomous_Tier_1_Phishing_Triage_Pipeline.md)**
+* **[Autonomous Tier 1 Phishing Triage Pipeline](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Sentinel_Native_Autonomous_Triage_Agent.md)**
     * ***Architecture**:* Engineered a **two-process SOC automation system** using a LangGraph ReAct AI agent and a FastMCP tool server.
     * ***Capabilities**:* Automates email ingestion, extracts IOCs via Regex, queries **live threat intelligence** (VirusTotal API), and routes verdicts to a SIEM.
     * ***SIEM Integration**:* Configured **Splunk Enterprise** for continuous JSON log ingestion, building a real-time **"Single Pane of Glass"** dashboard for threat distribution and analyst queues.
