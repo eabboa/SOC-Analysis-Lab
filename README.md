@@ -31,11 +31,12 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
 
 ### Featured Engineering Projects
 
-* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Sentinel_Native_Autonomous_Triage_Agent.md)**
-    * ***Architecture**:* Engineered a **zero-cost SOAR-lite pipeline** orchestrating bidirectional incident response via **LangGraph** and **Azure REST APIs**.
-    * ***Capabilities**:* Fetches live incidents, applies **deterministic pre-processing** to optimize LLM token consumption, and executes **concurrent CTI enrichment** (VirusTotal/AbuseIPDB).
-    * ***SIEM Integration**:* Writes high-fidelity triage verdicts and **schema-gated KQL hunting queries** directly back to **Microsoft Sentinel**, auto-closing benign-positives.
-    * ***Constraints Overcome**:* Mitigated **LLM hallucination** via strict schema maps for KQL generation and bypassed synchronous API bottlenecks using `asyncio` concurrent execution.
+* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/sentinel-triage-agent)**
+    * ***Architecture***: Engineered a **bidirectional SOAR-lite pipeline** using **LangGraph StateGraph** to orchestrate a $0-cost triage workflow via **Azure REST APIs** and **Managed Identities** (zero-secret architecture).
+    * ***Asynchronous Orchestration***: Leverages `asyncio` and `aiohttp` to bypass synchronous API bottlenecks, executing **concurrent CTI enrichment** (VirusTotal/AbuseIPDB) and parallel incident polling with rate-limit semaphores.
+    * ***Deterministic Reliability***: Mitigates LLM unreliability by enforcing **strict Pydantic schemas** for KQL generation and classification, ensuring 100% valid state transitions and token-efficient processing.
+    * ***Resilience Engineering***: Implemented **Optimistic Concurrency Control (ETags)** to prevent race conditions in multi-analyst environments and a **Human-in-the-Loop (HITL)** gating mechanism for high-fidelity incident closure.
+
 
 * **[Autonomous Tier 1 Phishing Triage Pipeline](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Autonomous_Tier_1_Phishing_Triage_Pipeline.md)**
     * ***Architecture**:* Engineered a **two-process SOC automation system** using a LangGraph ReAct AI agent and a FastMCP tool server.
