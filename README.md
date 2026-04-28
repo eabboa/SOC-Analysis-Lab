@@ -48,19 +48,19 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
 <!-- PORTFOLIO:START -->
 
 * **[Malware-Analysis](./Malware-Analysis/)**
-  * *Static & Dynamic triage of obfuscated payloads (e.g., Cryptbot, Loaders). IOC extraction and **MITRE ATT&CK mapping**.*
+  * *Static & Dynamic triage of obfuscated payloads (e.g., Cryptbot, Loaders). IOC extraction and MITRE ATT&CK mapping.*
   * [Agent Tesla VBA Dropper](./Malware-Analysis/Agent_Tesla_VBA_Dropper.md)
   * [WannaCry Memory Forensics Analysis](./Malware-Analysis/WannaCry_Memory_Forensics_Analysis.md)
 
 * **[Network-Forensics](./Network-Forensics/)**
-  * ***PCAP analysis, C2 traffic identification**, and protocol abuse detection.*
+  * *PCAP analysis, C2 traffic identification, and protocol abuse detection.*
   * [ARP Spoofing Competing MITM Analysis](./Network-Forensics/ARP_Spoofing_Competing_MITM_Analysis.md)
   * [CobaltStrike and IcedID Infection](./Network-Forensics/CobaltStrike-and-IcedID-Infection.md)
   * [PCAP Analysis of SSL Stripping&Credential Theft](./Network-Forensics/PCAP_Analysis_of_SSL_Stripping&Credential_Theft.md)
   * [Triage of Local DNS Spoofing Activity](./Network-Forensics/Triage_of_Local_DNS_Spoofing_Activity.md)
 
 * **[SIEM-Hunting](./SIEM-Hunting/)**
-  * ***Splunk/ELK queries, Sigma rules**, and brute-force detection.*
+  * *Splunk/ELK queries, Sigma rules, and brute-force detection.*
   * [AI As C2 Theoretical Analysis](./SIEM-Hunting/AI_as_C2_Theoretical_Analysis.md)
   * [BITSAdmin LOLBin C2 Kibana](./SIEM-Hunting/BITSAdmin_LOLBin_C2_Kibana.md)
   * [LOLBin C2 Beaconing Via BITS Jobs](./SIEM-Hunting/LOLBin_C2_Beaconing_via_BITS_Jobs.md)
@@ -72,7 +72,7 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
   * [Tempest IR Follina Killchain](./Incident-Response/Tempest_IR_Follina_Killchain.md)
 
 * **[Detection-Engineering](./Detection-Engineering/)**
-  * *Custom **YARA/Snort signatures**, proactive alert creation, and false-positive tuning against adversary tradecraft.*
+  * *Custom YARA/Snort signatures, proactive alert creation, and false-positive tuning against adversary tradecraft.*
   * [Atomic Red Team Emulation Sysmon Detection](./Detection-Engineering/Atomic_Red_Team_Emulation_Sysmon_Detection.md)
 
 <!-- PORTFOLIO:END -->
