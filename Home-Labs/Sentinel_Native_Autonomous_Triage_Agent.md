@@ -8,10 +8,12 @@
 ![Microsoft Entra ID|114](https://img.shields.io/badge/Entra_ID-OAuth2_MSAL-0072C6?style=flat-square&logo=microsoft&logoColor=white)
 ![VirusTotal](https://img.shields.io/badge/VirusTotal-API_v3-394EFF?style=flat-square)
 ![AbuseIPDB](https://img.shields.io/badge/AbuseIPDB-API_v2-8B0000?style=flat-square)
+![asyncio](https://img.shields.io/badge/asyncio-Parallel_Execution-2C5BB4?style=flat-square)
 ![aiohttp](https://img.shields.io/badge/aiohttp-Async_I/O-2C5BB4?style=flat-square)
+![Pydantic](https://img.shields.io/badge/Pydantic-Structured_Output-E92063?style=flat-square)
 
 **Type:** Cloud Security / Detection Engineering / AI Automation  
-**Stack:** Microsoft Azure · Microsoft Sentinel · LangGraph · Google Gemini · VirusTotal · AbuseIPDB  
+**Stack:** Microsoft Azure · Microsoft Sentinel · LangGraph · Pydantic · Managed Identities · Google Gemini · VirusTotal · AbuseIPDB
 **Cost:** $0 (free tier across all services)  
 **Code:** [sentinel-triage-agent](https://github.com/eabboa/sentinel-triage-agent)
 
@@ -36,26 +38,12 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 | Area | Specifics |
 |---|---|
 | Cloud infrastructure | Azure tenant setup, Log Analytics Workspace, Microsoft Sentinel |
-| Identity and access | Service Principal, App Registration, OAuth2 Client Credentials flow, RBAC at Resource Group scope |
+| Identity and access | Azure Managed Identities, DefaultAzureCredential, RBAC at Resource Group scope (Zero-secret architecture) |
 | API integration | Sentinel REST API (incidents, alerts, comments, status updates), Azure policy constraints |
 | Detection engineering | MITRE ATT&CK tactic mapping, KQL query generation, schema-aware prompting |
-| AI automation | LangGraph StateGraph orchestration, LLM-based triage reasoning, structured JSON output |
+| AI automation | LangGraph StateGraph orchestration, LangChain with_structured_output, Pydantic strict schema validation |
 | Threat intelligence | VirusTotal API v3, AbuseIPDB API v2, async concurrent enrichment |
-| Engineering judgment | Human-in-the-loop gating, API rate limit handling, fault isolation per node |
-
-# Sincerity first.
-
-How did I make that happen?
-
-I already had the idea of this:
-
-"Shift your LangGraph pipeline to integrate directly with Microsoft Sentinel. Deploy a free Azure tenant. Feed it sample attack data. Write Python scripts to pull incidents via the Sentinel REST API. Use LangGraph to analyze the data, query external CTI (VirusTotal and AbuseIPDB), and automatically post a triage summary and recommended KQL hunting queries back into the Sentinel incident comments."
-
-My previous phishing triage project was localized. It merely monitored an inbox folder for .txt files. This project represents the jump to bidirectional, enterprise-grade SIEM integration.
-
-I provided the idea to **Claude** to generate the Python scripts.
-
-I then manually audited and commented the code line-by-line (visible in the source files). I provided the **what** and **why**. AI provided the how.
+| Engineering judgment | Optimistic Concurrency Control (ETag), async/await parallel execution, API rate-limit semaphores, HITL gating  |
 
 ---
 
@@ -92,3 +80,13 @@ Sentinel Incident (New status)
          │
          ▼
 [Close Review Node]      Executes Sentinel API closure only upon explicit human approval
+```
+
+## Designing for Failure
+
+A SOAR pipeline that cannot handle failure is a liability, not an asset. To ensure enterprise resilience, I engineered this system with strict fault-tolerance mechanisms:
+
+1. **Optimistic Concurrency Control (ETag):** In a real SOC, human analysts and automated rules access incidents simultaneously. By utilizing Azure ETags (`If-Match` headers), the pipeline guarantees it will never blindly overwrite an analyst's manual update if the incident state changed during the pipeline's execution window.
+2. **Secretless Authentication:** Hardcoded secrets are an unacceptable attack vector. The pipeline utilizes Azure's `DefaultAzureCredential`, assuming the identity of the compute environment (Managed Identity) rather than relying on rotating client secrets.
+3. **Deterministic State Transitions:** LLMs are inherently probabilistic, which is dangerous for state machines. By binding the LLM output to LangChain's `with_structured_output` and a strict `Pydantic` schema, the agent is forced to return strongly typed verdicts. If it fails, the node catches the validation error rather than crashing the downstream KQL generation.
+4. **Graceful Degradation on CTI Failure:** Third-party threat intel APIs (VirusTotal, AbuseIPDB) frequently throttle or timeout. The scoring logic treats missing CTI data as a neutral baseline rather than defaulting to "benign," preventing transient network errors from causing false negatives.
