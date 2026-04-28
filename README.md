@@ -31,7 +31,7 @@ SOC Analyst candidate building **proactive threat detection** and malware triage
 
 ### Featured Engineering Projects
 
-* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/sentinel-triage-agent)**
+* **[Sentinel-Native Autonomous Triage Agent](https://github.com/eabboa/eabboa/blob/main/Home-Labs/Sentinel_Native_Autonomous_Triage_Agent.md)**
     * ***Architecture**:* Engineered a **zero-cost SOAR-lite pipeline** orchestrating bidirectional incident response via **LangGraph** and **Azure REST APIs**.
     * ***Capabilities**:* Fetches live incidents, applies **deterministic pre-processing** to optimize LLM token consumption, and executes **concurrent CTI enrichment** (VirusTotal/AbuseIPDB).
     * ***SIEM Integration**:* Writes high-fidelity triage verdicts and **schema-gated KQL hunting queries** directly back to **Microsoft Sentinel**, auto-closing benign-positives.
