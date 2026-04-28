@@ -21,6 +21,8 @@
 
 _Note_: This project establishes the logic of cybersecurity automation. LLMs were actively used to bridge coding execution. The focus is on designing an enterprise-resilient security architecture that solves SOC bottlenecks under production constraints.
 
+_Status_: Currently being **_updated_**.
+
 ---
 
 ## What I Built
