@@ -16,21 +16,21 @@
 **Cost:** $0 (free tier across all services)  
 **Code:** [sentinel-triage-agent](https://github.com/eabboa/sentinel-triage-agent)
 
-**Objective:** A defensively engineered, zero-cost SOAR prototype designed to safely handle Tier 1 benign-positive alarm fatigue without compromising true positive retention or crashing under high log volumes. 
+**Objective:** A defensively engineered, zero-cost **SOAR architecture** designed to safely absorb Tier 1 benign-positive alarm fatigue without compromising true positive retention. It shifts the operational paradigm from reactive manual polling to deterministic, machine-speed orchestration.
 
-_Note_: This project establishes the logic of cybersecurity automation. LLMs were actively used to bridge coding execution. The focus is on designing an enterprise-resilient security architecture that solves SOC bottlenecks under production constraints.
+_Note_: This project establishes the logic of cybersecurity automation. LLMs were actively used to bridge coding execution. LLMs are strictly bound as reasoning engines, constrained by code, to solve SOC bottlenecks under rigid production requirements.
 
-_Status_: Currently being **_updated_**.
+_Status_: v0.3.0 Active,  Currently being **_updated_**.
 
 ---
 
 ## What I Built
 
-An autonomous pipeline that reads live incidents from **Microsoft Sentinel**, triages them using an **LLM**, and writes a structured verdict back into the incident as a comment, requiring explicit human approval before altering incident status.
-
 Most SIEM integrations flow in one direction: a tool reads logs and produces output elsewhere. This project is **bidirectional**. Sentinel is both the source and the destination. 
 
-The agent reads an incident, extracts raw alerts, orchestrates threat intelligence enrichment concurrently, reasons about severity, performs LLM-based deterministic classification, generates schema-aware **KQL** hunting queries, and posts the result back into the incident record where a human analyst would see it. 
+The agent reads an incident, extracts raw alerts, and orchestrates asynchronous threat intelligence enrichment. It leverages a **RAG-based correction loop** to retrieve historical decisions, reasons about severity, and performs LLM-based deterministic classification. 
+
+It then generates **schema-aware KQL hunting** queries and posts the structured verdict back into the incident record. Finally, conditional routing enables dynamic state execution, from silent closure of benign events to active, HITL-gated endpoint containment for critical threats.
 
 That is the architecture SOAR platforms implement. This is a recreation of it for $0.
 
@@ -38,56 +38,67 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 
 | Area | Specifics |
 |---|---|
-| Cloud infrastructure | Azure tenant setup, Log Analytics Workspace, Microsoft Sentinel |
-| Identity and access | Azure Managed Identities, DefaultAzureCredential, RBAC at Resource Group scope (Zero-secret architecture) |
-| API integration | Sentinel REST API (incidents, alerts, comments, status updates), Azure policy constraints |
-| Detection engineering | MITRE ATT&CK tactic mapping, KQL query generation, schema-aware prompting |
-| AI automation | LangGraph StateGraph orchestration, LangChain with_structured_output, Pydantic strict schema validation |
-| Threat intelligence | VirusTotal API v3, AbuseIPDB API v2, async concurrent enrichment |
-| Engineering judgment | Optimistic Concurrency Control (ETag), async/await parallel execution, API rate-limit semaphores, HITL gating  |
+| Cloud infrastructure | Azure tenant setup, Log Analytics Workspace, Microsoft Sentinel APIs. |
+| Identity and access | Zero-secret architecture utilizing Azure Managed Identities (DefaultAzureCredential) and tightly scoped RBAC. |
+| Resilient Orchestration | LangGraph StateGraph orchestration with conditional routing, minimizing token consumption, and bypassing irrelevant execution nodes mid-flight. |
+| Adaptive Learning | RAG-based feedback loops capture analyst corrections, continually optimizing KQL generation and classification accuracy over time. |
+| Deterministic AI | LangChain with_structured_output paired with rigid Pydantic schemas. LLM unreliability is mitigated by forcing 100% valid state transitions. |
+| Asynchronous I/O | asyncio and aiohttp execute parallel CTI enrichment (VirusTotal API v3, AbuseIPDB API v2) and multi-incident polling governed by rate-limit semaphores. |
+| Active Containment | Azure REST API integration for automated, HITL-gated remediation (e.g., dynamic host isolation, IP blocking).  |
 
 ---
 
 ## Architecture Flow
 
-Each node is a single-responsibility function. The pipeline is orchestrated by **LangGraph**, which enforces a typed state schema shared across all nodes. If a node writes a key not defined in the schema, it fails immediately rather than propagating silently.
+Each node strictly adheres to the Single Responsibility Principle. The pipeline is bound by a typed state schema; any undocumented key mutation results in immediate failure, preventing silent downstream corruption.
+
 
 ```text
-    [Main Entry]       Asyncio.gather polls multiple incidents in parallel with rate-limit Semaphores
+[Main Entry]       Asyncio.gather polls multiple incidents in parallel with rate-limit Semaphores
          │
          ▼
     [Fetch Node]       Pull incident metadata and associated raw alerts via REST API
          │
          ▼
-  [Summarize Node]     Condense raw alert data into a token-efficient summary (no LLM)
+  [Summarize Node]     Condense raw alert data into a token-efficient summary (Deterministic, no LLM)
          │
          ▼
-   [Extract Node]      Regex extracts IPs, hashes, URLs — LLM extracts usernames, hostnames
+   [Extract Node]      Regex extracts IPs/Hashes/URLs; tightly-prompted LLM extracts usernames/hostnames
          │
          ▼
-   [Enrich Node]       Async queries to AbuseIPDB (IPs) and VirusTotal (URLs, hashes)
+   [Enrich Node]       Concurrent async queries to AbuseIPDB (IPs) and VirusTotal (URLs, hashes)
          │
          ▼
-  [Analyst Node]       LLM evaluated against a strict Pydantic schema for deterministic state transition
+  [Learning Node]      RAG retrieval of historical analyst corrections to ground the current prompt
          │
          ▼
-    [KQL Node]         Schema-gated KQL hunting queries using only tables present in the workspace
+  [Analyst Node]       LLM evaluates state against a strict Pydantic schema for deterministic transition
+         │
+         ├──► (If Benign/False Positive) ──► [Conditional Bypass to Write-back]
+         │
+         ▼ (If Suspicious/True Positive)
+    [KQL Node]         Schema-gated KQL hunting queries restricted to active workspace tables
          │
          ▼
- [Write-back Node]     PUT request with ETag validation to prevent race conditions
+ [Write-back Node]     PUT request with Optimistic Concurrency Control (ETag) validation
          │
          ▼
- [HITL Interrupt]      Execution pauses. Awaits manual verification of LLM output.
+ [HITL Interrupt]      Execution suspends. Awaits manual verification of state and recommended actions.
          │
-         ▼
-[Close Review Node]    Executes Sentinel API closure only upon explicit human approval
+         ├──► (Approve Containment) ──► [Containment Node] (Executes active isolation via Azure APIs)
+         │
+         ▼ (Approve Closure)
+[Close Review Node]    Executes Sentinel API closure workflow
 ```
 
 ## Designing for Failure
 
-A SOAR pipeline that cannot handle failure is a liability, not an asset. To ensure enterprise resilience, I engineered this system with strict fault-tolerance mechanisms:
+A security automation tool that fails open or corrupts state is a liability. Applying the principle of inversion. Solving for what guarantees failure, then engineering it out, results in the following fault-tolerance mechanisms:
 
-1. **Optimistic Concurrency Control (ETag):** In a real SOC, human analysts and automated rules access incidents simultaneously. By utilizing Azure ETags (`If-Match` headers), the pipeline guarantees it will never blindly overwrite an analyst's manual update if the incident state changed during the pipeline's execution window.
-2. **Secretless Authentication:** Hardcoded secrets are an unacceptable attack vector. The pipeline utilizes Azure's `DefaultAzureCredential`, assuming the identity of the compute environment (Managed Identity) rather than relying on rotating client secrets.
-3. **Deterministic State Transitions:** LLMs are inherently probabilistic, which is dangerous for state machines. By binding the LLM output to LangChain's `with_structured_output` and a strict `Pydantic` schema, the agent is forced to return strongly typed verdicts. If it fails, the node catches the validation error rather than crashing the downstream KQL generation.
-4. **Graceful Degradation on CTI Failure:** Third-party threat intel APIs (VirusTotal, AbuseIPDB) frequently throttle or timeout. The scoring logic treats missing CTI data as a neutral baseline rather than defaulting to "benign," preventing transient network errors from causing false negatives.
+**Race Condition Immunity (Optimistic Concurrency Control):** Human analysts and automated rules interact with incidents simultaneously. Utilizing Azure ETags (If-Match headers) guarantees the pipeline will never blindly overwrite an analyst's manual update if the incident state mutated during the agent's execution window.
+
+**Credential Compromise Elimination:** Hardcoded secrets are an unacceptable attack vector. The pipeline utilizes DefaultAzureCredential to inherit the identity of the compute environment, fully eliminating credential rotation and exposure risks.
+
+**Probabilistic Containment:** LLMs are probabilistic, making them dangerous for autonomous state machines. By binding the LLM output to a strict Pydantic schema, the agent is forced into strongly typed outputs. Validation errors are caught at the node level, preventing cascading failures or hallucinatory KQL execution.
+
+**Graceful Degradation on CTI Timeout:** Third-party threat intel APIs routinely throttle. The scoring logic treats missing or timed-out CTI data as a neutral baseline rather than defaulting to "benign," ensuring transient network errors never result in false negatives.
