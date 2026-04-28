@@ -5,7 +5,6 @@
 ![Microsoft Sentinel](https://img.shields.io/badge/Microsoft_Sentinel-REST_API-0078D4?style=flat-square&logo=microsoftazure&logoColor=white)
 ![Claude](https://img.shields.io/badge/Claude-4.6_Sonnet-D97757?style=flat-square&logo=anthropic&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/Gemini-2.5_Flash-4285F4?style=flat-square&logo=google&logoColor=white)
-![Microsoft Entra ID|114](https://img.shields.io/badge/Entra_ID-OAuth2_MSAL-0072C6?style=flat-square&logo=microsoft&logoColor=white)
 ![VirusTotal](https://img.shields.io/badge/VirusTotal-API_v3-394EFF?style=flat-square)
 ![AbuseIPDB](https://img.shields.io/badge/AbuseIPDB-API_v2-8B0000?style=flat-square)
 ![asyncio](https://img.shields.io/badge/asyncio-Parallel_Execution-2C5BB4?style=flat-square)
