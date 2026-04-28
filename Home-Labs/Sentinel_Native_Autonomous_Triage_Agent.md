@@ -52,34 +52,34 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 Each node is a single-responsibility function. The pipeline is orchestrated by **LangGraph**, which enforces a typed state schema shared across all nodes. If a node writes a key not defined in the schema, it fails immediately rather than propagating silently.
 
 ```text
-Sentinel Incident (New status)
+    [Main Entry]       Asyncio.gather polls multiple incidents in parallel with rate-limit Semaphores
          │
          ▼
-    [Fetch Node]         Pull incident metadata and associated raw alerts via REST API
+    [Fetch Node]       Pull incident metadata and associated raw alerts via REST API
          │
          ▼
-  [Summarize Node]       Condense raw alert data into a token-efficient summary (no LLM)
+  [Summarize Node]     Condense raw alert data into a token-efficient summary (no LLM)
          │
          ▼
-   [Extract Node]        Regex extracts IPs, hashes, URLs — LLM extracts usernames, hostnames
+   [Extract Node]      Regex extracts IPs, hashes, URLs — LLM extracts usernames, hostnames
          │
          ▼
-   [Enrich Node]         Async queries to AbuseIPDB (IPs) and VirusTotal (URLs, hashes)
+   [Enrich Node]       Async queries to AbuseIPDB (IPs) and VirusTotal (URLs, hashes)
          │
          ▼
-  [Analyst Node]         LLM produces a structured verdict on a confidence level of 0-100
+  [Analyst Node]       LLM evaluated against a strict Pydantic schema for deterministic state transition
          │
          ▼
-    [KQL Node]           Schema-gated KQL hunting queries using only tables present in the workspace
+    [KQL Node]         Schema-gated KQL hunting queries using only tables present in the workspace
          │
          ▼
- [Write-back Node]       Posts formatted triage report to Sentinel incident with 'Pending Analyst Review' tag
+ [Write-back Node]     PUT request with ETag validation to prevent race conditions
          │
          ▼
- [HITL Interrupt]        Execution pauses. Awaits manual verification of LLM output.
+ [HITL Interrupt]      Execution pauses. Awaits manual verification of LLM output.
          │
          ▼
-[Close Review Node]      Executes Sentinel API closure only upon explicit human approval
+[Close Review Node]    Executes Sentinel API closure only upon explicit human approval
 ```
 
 ## Designing for Failure
