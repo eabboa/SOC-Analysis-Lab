@@ -20,7 +20,7 @@
 
 _Note_: This project establishes the logic of cybersecurity automation. LLMs are strictly bound as reasoning engines, constrained by code, to solve SOC bottlenecks under rigid production requirements.
 
-_Status_: v0.3.0 Active,  Currently being **_updated_**.
+_Status_: v0.4.0 Active,  Currently being **_updated_**.
 
 ---
 
