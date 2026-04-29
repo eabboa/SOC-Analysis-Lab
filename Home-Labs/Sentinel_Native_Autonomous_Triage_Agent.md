@@ -23,6 +23,8 @@ _Note_: This project demonstrates the operational logic of cybersecurity automat
 
 _Status_: v0.5.0 Active
 
+_Last updated_: 29-04-2026
+
 ---
 
 ## What I Built
