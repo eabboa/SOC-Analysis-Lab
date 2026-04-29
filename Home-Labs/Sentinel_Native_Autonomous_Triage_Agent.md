@@ -54,7 +54,7 @@ Each node strictly adheres to the Single Responsibility Principle. The pipeline 
 
 
 ```text
-[Main Entry]       Asyncio.gather polls multiple incidents in parallel with rate-limit Semaphores
+[Main Entry]       Asyncio.gather polls multiple incidents in concurrent with rate-limit Semaphores
          │
          ▼
     [Fetch Node]       Pull incident metadata and associated raw alerts via REST API
@@ -72,7 +72,7 @@ Each node strictly adheres to the Single Responsibility Principle. The pipeline 
   [Learning Node]      RAG retrieval of historical analyst corrections to ground the current prompt
          │
          ▼
-  [Analyst Node]       LLM evaluates state against a strict Pydantic schema for deterministic transition
+  [Analyst Node]       LLM evaluates "state" against a strict Pydantic schema for deterministic transition
          │
          ├──► (If Benign/False Positive) ──► [Conditional Bypass to Write-back]
          │
