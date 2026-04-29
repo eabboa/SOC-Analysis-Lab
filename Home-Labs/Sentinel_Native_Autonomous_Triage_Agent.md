@@ -7,7 +7,7 @@
 ![Google Gemini](https://img.shields.io/badge/Gemini-2.5_Flash-4285F4?style=flat-square&logo=google&logoColor=white)
 ![VirusTotal](https://img.shields.io/badge/VirusTotal-API_v3-394EFF?style=flat-square)
 ![AbuseIPDB](https://img.shields.io/badge/AbuseIPDB-API_v2-8B0000?style=flat-square)
-![asyncio](https://img.shields.io/badge/asyncio-Parallel_Execution-2C5BB4?style=flat-square)
+![asyncio](https://img.shields.io/badge/asyncio-Concurrent_Execution-2C5BB4?style=flat-square)
 ![aiohttp](https://img.shields.io/badge/aiohttp-Async_I/O-2C5BB4?style=flat-square)
 ![Pydantic](https://img.shields.io/badge/Pydantic-Structured_Output-E92063?style=flat-square)
 
@@ -43,7 +43,7 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 | Resilient Orchestration | LangGraph StateGraph orchestration with conditional routing, minimizing token consumption, and bypassing irrelevant execution nodes mid-flight. |
 | Adaptive Learning | RAG-based feedback loops capture analyst corrections, continually optimizing KQL generation and classification accuracy over time. |
 | Deterministic AI | LangChain with_structured_output paired with rigid Pydantic schemas. LLM unreliability is mitigated by forcing 100% valid state transitions. |
-| Asynchronous I/O | asyncio and aiohttp execute parallel CTI enrichment (VirusTotal API v3, AbuseIPDB API v2) and multi-incident polling governed by rate-limit semaphores. |
+| Asynchronous I/O | asyncio and aiohttp execute concurrent CTI enrichment (VirusTotal API v3, AbuseIPDB API v2) and multi-incident polling governed by rate-limit semaphores. |
 | Active Containment | Azure REST API integration for automated, HITL-gated remediation (e.g., dynamic host isolation, IP blocking).  |
 
 ---
