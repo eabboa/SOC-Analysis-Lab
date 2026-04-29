@@ -18,7 +18,7 @@
 
 **Objective:** A defensively engineered, zero-cost **SOAR architecture** designed to safely absorb Tier 1 benign-positive alarm fatigue without compromising true positive retention. It shifts the operational paradigm from reactive manual polling to deterministic, machine-speed orchestration.
 
-_Note_: This project establishes the logic of cybersecurity automation. LLMs were actively used to bridge coding execution. LLMs are strictly bound as reasoning engines, constrained by code, to solve SOC bottlenecks under rigid production requirements.
+_Note_: This project establishes the logic of cybersecurity automation. LLMs are strictly bound as reasoning engines, constrained by code, to solve SOC bottlenecks under rigid production requirements.
 
 _Status_: v0.3.0 Active,  Currently being **_updated_**.
 
