@@ -63,7 +63,7 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 
 ## Architecture Flow
 
-Each node adheres to the **Single Responsibility Principle**. The pipeline is bound by `TriageState`, a `TypedDict` schema with 17 typed fields. Any undocumented key mutation results in immediate failure, preventing silent downstream corruption.
+Each node adheres to the **Single Responsibility Principle**. The pipeline is bound by `TriageState`, a `Pydantic BaseModel` with 17 fields. It enforces strict runtime validation; any undocumented key mutation results in immediate failure, preventing silent downstream corruption.
 
 ```
                     ┌───────┐
