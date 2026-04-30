@@ -63,7 +63,7 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 
 ## Architecture Flow
 
-Each node adheres to the **Single Responsibility Principle**. The pipeline is bound by `TriageState`, a `Pydantic BaseModel` with 17 fields.
+Each node adheres to the **Single Responsibility Principle**. The pipeline state is managed by `TriageState`, a `TypedDict` used for LangGraph state management.
 
 ```
                     ┌───────┐
