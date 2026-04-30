@@ -52,7 +52,7 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 | **Cloud Infrastructure** | Azure tenant setup, Log Analytics Workspace, Microsoft Sentinel REST API (stable `2023-02-01`). |
 | Identity & Access | Zero-secret architecture. `DefaultAzureCredential` inherits Managed Identity (production) or Azure CLI tokens (development). Module-level token cache with 5-minute expiry buffer. |
 | **Stateful Orchestration** | LangGraph `StateGraph` with 11 nodes, 3 conditional routing edges, `MemorySaver` checkpointing, and `interrupt_after` for human-in-the-loop suspension. |
-| Adaptive Learning | ChromaDB RAG feedback loop. Analyst corrections are embedded via `all-MiniLM-L6-v2`, stored persistently, and retrieved as few-shot examples to iteratively reduce classification error. |
+| Adaptive Learning | ChromaDB RAG feedback loop. Analyst corrections are embedded via `all-MiniLM-L6-v2`, stored persistently, and retrieved as few-shot examples to reduce classification error iteratively. |
 | **Deterministic AI** | `with_structured_output(AnalystVerdict)` paired with a rigid Pydantic schema. The LLM is forced into strongly typed outputs (`classification`, `is_true_positive`, `confidence`, `triage_summary`, `mitre_analysis`, `recommended_action`). Validation failures are caught at the node level. |
 | **Schema-Gated KQL** | Hunting queries are constrained to an explicit table-column map (`SecurityAlert`, `SigninLogs`, `AuditLogs`, `SecurityEvent`, `OfficeActivity`). Tables are pre-filtered by detected MITRE ATT&CK tactics before prompt construction. |
 | **Asynchronous I/O** | `asyncio.gather` with `Semaphore(3)` for concurrent incident processing. `aiohttp` with `ClientTimeout` for CTI enrichment. VirusTotal calls are serialized with a 15-second inter-request sleep. |
@@ -63,7 +63,7 @@ That is the architecture SOAR platforms implement. This is a recreation of it fo
 
 ## Architecture Flow
 
-Each node adheres to the **Single Responsibility Principle**. The pipeline is bound by `TriageState`, a `Pydantic BaseModel` with 17 fields. It enforces strict runtime validation; any undocumented key mutation results in immediate failure, preventing silent downstream corruption.
+Each node adheres to the **Single Responsibility Principle**. The pipeline is bound by `TriageState`, a `Pydantic BaseModel` with 17 fields.
 
 ```
                     ┌───────┐
