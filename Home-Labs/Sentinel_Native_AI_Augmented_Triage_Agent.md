@@ -31,7 +31,7 @@ _Last updated_: 29-04-2026
 
 Most SIEM integrations flow in one direction: a tool reads logs and produces output elsewhere. This project is **bidirectional**. Sentinel is both the source and the destination.
 
-The agent polls for new incidents, fetches the full incident object and raw alerts from the **Sentinel REST API**, and deterministically condenses them into a token-efficient summary. A hybrid extraction layer uses compiled regex for structured IOCs (IPs, hashes, URLs) and a secondary LLM call for contextual entities (usernames, hostnames, domains) that regex cannot reliably parse. Extracted indicators are then enriched concurrently through AbuseIPDB and VirusTotal, with per-request retries and rate-limit serialization.
+The agent polls for new incidents, fetches the full incident object and raw alerts from the **Sentinel REST API**, and condenses them into a token-efficient summary. A hybrid extraction layer uses compiled regex for structured IOCs (IPs, hashes, URLs) and a secondary LLM call for contextual entities (usernames, hostnames, domains) that regex cannot reliably parse. Extracted indicators are then enriched concurrently through AbuseIPDB and VirusTotal, with per-request retries and rate-limit serialization.
 
 Before classification, the agent queries a **ChromaDB RAG store** for historical analyst corrections semantically similar to the current incident. These mismatches are injected as few-shot examples into the analyst prompt, grounding the model against previously observed mistakes. The LLM then produces a deterministic verdict via `with_structured_output` bound to a strict **Pydantic schema**, every field is typed, every classification is enumerated, and every confidence score is an exact integer.
 
