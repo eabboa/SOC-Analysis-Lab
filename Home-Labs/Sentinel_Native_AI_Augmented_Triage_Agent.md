@@ -141,7 +141,7 @@ Three conditional edges govern the pipeline:
    - `FalsePositive` with confidence > 95 → bypass KQL, proceed directly to `writeback`.
    - All other cases → `kql` (generate hunting queries for ambiguous incidents).
 
-3. **After `writeback` (post-HITL interrupt):** If the analyst approves containment → `containment` → `close_review`. Otherwise → `close_review` directly. No AI-Augmented closure occurs regardless of classification or confidence score.
+3. **After `writeback` (post-HITL interrupt):** If the analyst approves containment → `containment` → `close_review`. Otherwise → `close_review` directly. No Autonomous closure occurs regardless of classification or confidence score.
 
 ---
 
@@ -156,7 +156,7 @@ Human analysts and automated rules interact with incidents simultaneously. The p
 Hardcoded secrets are an unacceptable attack vector. The pipeline authenticates exclusively through `DefaultAzureCredential`, inheriting the identity of the compute environment. **In production**, this means **Azure Managed Identity with scoped RBAC** (`Microsoft Sentinel Contributor`). In development, it falls back to `az login` tokens. Tokens are cached module-level with a 5-minute expiry buffer to avoid unnecessary round-trip latency. No MSAL client secrets, no credential rotation, no static keys.
 
 ### Probabilistic Containment
-LLMs are probabilistic, which makes them dangerous for AI-Augmented state machines. Every LLM output is bound to a strict **Pydantic schema** (`AnalystVerdict`) via `with_structured_output`. The model is forced into strongly typed outputs: an enumerated `classification`, a boolean `is_true_positive`, and an integer `confidence` score. Validation errors are caught at the node level and returned as structured error objects, preventing cascading failures or hallucinatory KQL execution. Additionally, no incident is closed, and no device is isolated without passing through the HITL interrupt gate.
+LLMs are probabilistic, which makes them dangerous for Autonomous state machines. Every LLM output is bound to a strict **Pydantic schema** (`AnalystVerdict`) via `with_structured_output`. The model is forced into strongly typed outputs: an enumerated `classification`, a boolean `is_true_positive`, and an integer `confidence` score. Validation errors are caught at the node level and returned as structured error objects, preventing cascading failures or hallucinatory KQL execution. Additionally, no incident is closed, and no device is isolated without passing through the HITL interrupt gate.
 
 ### Graceful Degradation on CTI Timeout
 Third-party threat intel APIs routinely throttle. The confidence scoring algorithm treats missing or timed-out CTI data as a **neutral baseline** (0-point modifier) rather than defaulting to "benign." This ensures that transient network errors or rate limits never result in false negatives. All CTI calls are wrapped with `aiohttp` timeouts, `tenacity` retries, and structured error capture. A failed enrichment degrades the confidence range; it never silently downgrades severity.
